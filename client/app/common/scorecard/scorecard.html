@@ -1,0 +1,22 @@
+<div class="fixturesList">
+  <div ng-repeat="fixture in vm.fixtures" class="fixtureRow">
+    <div class="fixtureRow__team">
+      {{fixture.home.team}}
+    </div>
+    <div class="fixtureRow__teamScore">
+      {{fixture.home.score}}
+    </div>
+    <div class="fixtureRow__vs">
+      <p>VS</p>
+    </div>
+    <div class="fixtureRow__team">
+      {{fixture.away.team}}
+    </div>
+    <div class="fixtureRow__teamScore">
+      {{fixture.away.score}}
+    </div>
+    <div class="fixtureRow__userScore">
+      <input type="text">
+    </div>
+  </div>
+</div>

@@ -1,0 +1,68 @@
+@import "../../assets/styles/mixins/all";
+@import "../../assets/styles/globals";
+
+.homePage {
+  .homeTitle {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  .homeDescription {
+    @include siteMargin;
+    background-color:$subBackgroundColor;
+
+    .factsListItem {
+      text-align: center;
+      margin-bottom: 3rem;
+
+      .factsListItem__image {
+        margin-bottom: 1.5rem;
+        img {
+          max-width: 12rem;
+        }
+      }
+      .factsListItem__title {
+
+      }
+      .factsListItem__description {
+        max-width: 30rem;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+    }
+  }
+  .howToPlay {
+    @include siteMargin;
+
+    .instructionListItem {
+      text-align: center;
+      margin-bottom: 3rem;
+      .instructionListItem__image {
+        margin-bottom: 1.5rem;
+        img {
+          max-width: 18rem;
+        }
+      }
+
+      .instructionListItem__description {
+        max-width: 30rem;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+  }
+  .enterNow {
+    @include siteMargin;
+    text-align: center;
+    margin-bottom: 0;
+    background: #000000 url("/assets/images/fans_celebrate.png") no-repeat center/cover;
+    height: 40rem;
+    @include flexbox;
+    @include align-items(center);
+    @include justify-content(center);
+
+    .enterNow__content {
+
+    }
+  }
+}

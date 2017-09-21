@@ -1,0 +1,48 @@
+@import "../../assets/styles/mixins/all";
+@import "../../assets/styles/globals";
+
+.homeHeader {
+  background: #000 url(/assets/images/football_goal_sunset.png) no-repeat center/cover;
+  height:500px;
+  width:100%;
+
+  > div {
+  }
+
+  .homeHeader__top {
+    @include siteMargin;
+    @include flexbox;
+    @include flex-wrap(wrap);
+    @include align-items(center);
+
+    background-color:rgba(0,0,0,.4);
+
+    header {
+      @include flex(6);
+
+      h1 {
+        margin-bottom: 0;
+        color: $secondaryColor;
+      }
+    }
+    .siteNav {
+      @include flex(1);
+    }
+  }
+  .homeHeader__middleContent {
+    @include siteMargin;
+    padding-top: 5rem;
+    text-align: center;
+    h2 {
+      color: $secondaryColor;
+    }
+    p {
+      color: $secondaryColor;
+    }
+  }
+
+
+
+
+
+}

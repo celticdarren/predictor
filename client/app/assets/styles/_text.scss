@@ -1,0 +1,34 @@
+h1 {
+  font-family: $mainFont;
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color:$primaryColor;
+}
+
+h2 {
+  font-family: $mainFont;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: $textElementMarginBottom;
+  color:$primaryColor;
+}
+
+h3 {
+  font-family: $mainFont;
+  font-size: 1.8rem;
+  font-weight: 400;
+  margin-bottom: $textElementMarginBottom;
+  color:$primaryColor;
+}
+
+p, a, ul, li, span, div, section, header, article, footer {
+  font-family: $mainFont;
+  font-size: 1.4rem;
+  font-weight: 300;
+  color:$primaryColor;
+}
+
+p {
+  margin-bottom: $textElementMarginBottom;
+}

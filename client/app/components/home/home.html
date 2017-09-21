@@ -1,0 +1,58 @@
+<div class="homePage">
+  <section class="homeHeader">
+    <heading class="homeHeader__top"></heading>
+    <section class="homeHeader__middleContent">
+      <article>
+        <h2>Welcome to Fitbaw Predictor</h2>
+        <p>Get in with a chance to win some cash. Join us now</p>
+      </article>
+    </section>
+  </section>
+  <section class="homeDescription mainBlock">
+    <div class="homeTitle">
+      <h2>About us</h2>
+    </div>
+    
+    <ul class="homeDescription__list">
+      <li class="factsListItem" ng-repeat="fact in vm.facts">
+        <div class="factsListItem__image">
+          <img src="/assets/images/ball_{{$index + 1}}.png" alt="ball_{{$index}}" />
+        </div>
+        <div class="factsListItem__title">
+          <h3>{{fact.title}}</h3>
+        </div>
+        <div class="factsListItem__description">
+          <p>{{fact.description}}</p>
+        </div>
+      </li>
+    </ul>
+  </section>
+  <section class="howToPlay mainBlock">
+    <div class="homeTitle">
+      <h2>How to play</h2>
+    </div>
+    <ul class="howToPlay__list">
+      <li class="instructionListItem" ng-repeat="instruction in vm.howToPlay | orderBy: 'order'">
+        <div class="instructionListItem__image">
+          <img src="/assets/images/placeholder_1.png" alt="placeholder" />
+        </div>
+        <div class="instructionListItem__title">
+          <h3>{{instruction.title}}</h3>
+        </div>
+        <div class="instructionListItem__description">
+          <p>{{instruction.description}}</p>
+        </div>
+      </li>
+    </ul>
+  </section>
+  <section class="enterNow mainBlock">
+    <div class="enterNow__content">
+      <h2>Enter now</h2>
+      <p>Start your predictions at the click of a button</p>
+      <a href="#" class="button primaryButton">Enter now</a>
+    </div>
+  </section>
+  <footer>
+    <span>Copyright Darren Keen</span>
+  </footer>
+</div>

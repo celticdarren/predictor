@@ -1,0 +1,24 @@
+<nav>
+  <div class="overlay" ng-style="{'width': vm.isNavOpen ? '100%' : '0%'}">
+    
+    <!-- Button to close the overlay navigation -->
+    <a href="javascript:void(0)" class="closebtn" ng-click="vm.onNavClick()">&times;</a>
+    
+    <!-- Overlay content -->
+    <div class="overlay-content">
+      <a href="#">Home</a>
+      <a href="#aboutUs">About us</a>
+      <a href="#howToPlay">How to play</a>
+      <a href="#">Enter now</a>
+      <a href="#">Login</a>
+      <a href="#">Register</a>
+    </div>
+  
+  </div>
+  
+  <div ng-click="vm.onNavClick()" class="siteNav__navController">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</nav>
