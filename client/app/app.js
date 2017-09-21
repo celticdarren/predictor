@@ -1,4 +1,6 @@
 import angular from 'angular';
+import * as firebase from 'firebase';
+import FirebaseModule from 'angularfire';
 import CommonModule from './common';
 import ComponentsModule from './components';
 import AppComponent from './app.component';
@@ -11,7 +13,8 @@ angular
     AngularSanitize,
     AngularUiRouter,
     CommonModule,
-    ComponentsModule
+    ComponentsModule,
+    FirebaseModule
   ])
 
   // Application config
@@ -29,6 +32,17 @@ angular
           }
         }
       });
+  })
+  .config(function(){
+    let config = {
+      apiKey: "AIzaSyAh3ejQCmSuxUycuvXBdg8lgT1S_yGN5UU",
+      authDomain: "predictor-3c838.firebaseapp.com",
+      databaseURL: "https://predictor-3c838.firebaseio.com",
+      projectId: "predictor-3c838",
+      storageBucket: "predictor-3c838.appspot.com",
+      messagingSenderId: "721249192873"
+    };
+    firebase.initializeApp(config);
   })
 
   .run(($transitions, $location, $window) => {
