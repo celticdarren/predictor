@@ -4,38 +4,24 @@ import * as firebase from 'firebase';
 
 class LoginController {
 
-  constructor(Constants, $firebaseObject, $firebaseArray, AuthService) {
+  constructor(Constants, $firebaseObject, $firebaseArray, AuthService, $scope, $state) {
     'ngInject';
     this.Constants = Constants;
     this.AuthService = AuthService;
+    this.$state = $state;
     let ref = firebase.database().ref();
     let root = ref.child('scores');
 
-    let isUser = null;
+    this.loginUser = {email: null, password: null};
+    this.username = "";
+    this.user = this.AuthService.isLoggedIn();
 
-    // this.AuthService.login(user)
-    //   .then(() => {
-    //   console.log(this.AuthService.isLoggedIn());
-    //   console.log("Logged in");
-    //   this.testing = this.AuthService.isLoggedIn();
-    // });
-
-    this.testing = null;
-
-    this.testing = firebase.auth().onAuthStateChanged(function(user) {
-      if (user) {
-        console.log(user.email);
-        isUser = true;
-      } else {
-        console.log("Not logged in")
-      }
-    });
-
-    this.logout = function () {
-      this.AuthService.logout();
-    };
-
-    this.testing = isUser;
+    if(this.user != null) {
+      console.log("yes");
+      this.$state.go('app.dash')
+    } else {
+      console.log("no")
+    }
 
     // var obj = $firebaseObject(ref);
     // debugger;
@@ -48,6 +34,18 @@ class LoginController {
     //   });
     // });
 
+  }
+
+  onLogOut() {
+    this.AuthService.logout();
+  }
+
+  onLogIn() {
+    const user = this.loginUser;
+    this.AuthService.login(user)
+      .then(() => {
+        console.log(this.AuthService.isLoggedIn());
+      });
   }
 
 }

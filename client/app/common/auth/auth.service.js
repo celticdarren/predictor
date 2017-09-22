@@ -1,10 +1,11 @@
 import * as firebase from 'firebase';
 
-export default function ($firebaseAuth) {
+
+
+export default function ($firebaseAuth, $state) {
   'ngInject';
 
   const auth = $firebaseAuth(firebase.auth());
-
 
   return {
     fbTest() {
@@ -21,17 +22,34 @@ export default function ($firebaseAuth) {
     },
 
     logout() {
-      auth.$signOut();
-    },
-
-    isLoggedIn() {
-      return auth.$getAuth();
+      auth.$signOut().then(function() {
+        console.log("Logged out");
+        return true;
+      }).catch(function(error) {
+        console.log(error);
+      });
     },
 
     sendWelcomeEmail(emailAddress) {
       firebaseDataService.emails.push({
         emailAddress: emailAddress
       });
+    },
+
+    isLoggedIn(isAuthNeeded = false) {
+      let userObj = null;
+      firebase.auth().onAuthStateChanged((user) => {
+        if(isAuthNeeded && !user) {
+          $state.go("app.login");
+        }
+        userObj = user;
+      }).then(() => {
+        return userObj;
+      });
+    },
+
+    getUser() {
+
     }
 
   }
