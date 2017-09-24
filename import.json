@@ -1,0 +1,14 @@
+{
+  "fixtures": {
+    "week1": {
+      "teams": {
+        "away": "England",
+        "home": "Scotland"
+      },
+      "score": {
+        "away": null,
+        "home": null
+      }
+    }
+  }
+}

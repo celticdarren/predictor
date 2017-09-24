@@ -1,34 +1,27 @@
 const constants = {
-  fixtures: [
-    {
-      home: {
-        team: "Czech Republic",
-        score: 1
+  fixtures: {
+    week1: {
+      teams: {
+        home: "team",
+        away: "team"
       },
-      away: {
-        team: "Germany",
-        score: 2
+      score: {
+        home: null,
+        away: null
       }
-    }, {
-      home: {
-        team: "Lithuania",
-        score: 0
+    },
+    week2: {
+      teams: {
+        home: "team",
+        away: "team"
       },
-      away: {
-        team: "Scotland",
-        score: 3
-      }
-    }, {
-      home: {
-        team: "Malta",
-        score: 0
-      },
-      away: {
-        team: "England",
-        score: 4
+      score: {
+        home: null,
+        away: null
       }
     }
-  ],
+
+  },
   multipliers: {
     team: 1,
     score: 4
