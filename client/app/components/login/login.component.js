@@ -6,6 +6,7 @@ class LoginController {
 
   constructor(Constants, $firebaseObject, $firebaseArray, AuthService, $scope, $state) {
     'ngInject';
+    console.log(`Login running`);
     this.Constants = Constants;
     this.AuthService = AuthService;
     this.$state = $state;
@@ -14,13 +15,9 @@ class LoginController {
 
     this.loginUser = {email: null, password: null};
     this.username = "";
-    this.user = this.AuthService.isLoggedIn();
 
-    if(this.user != null) {
-      console.log("yes");
-      this.$state.go('app.dash')
-    } else {
-      console.log("no")
+    if (this.AuthService.getUser() != null) {
+      this.$state.go('app.dash');
     }
 
     // var obj = $firebaseObject(ref);
@@ -43,8 +40,11 @@ class LoginController {
   onLogIn() {
     const user = this.loginUser;
     this.AuthService.login(user)
-      .then(() => {
-        console.log(this.AuthService.isLoggedIn());
+      .then((value) => {
+        console.log(value);
+        this.$state.go("app.dash")
+      }, function (reason) {
+        alert(`Failed because ${reason}`)
       });
   }
 

@@ -33,7 +33,7 @@ angular
         }
       });
   })
-  .config(function(){
+  .config(function () {
     let config = {
       apiKey: "AIzaSyAh3ejQCmSuxUycuvXBdg8lgT1S_yGN5UU",
       authDomain: "predictor-3c838.firebaseapp.com",
@@ -45,13 +45,20 @@ angular
     firebase.initializeApp(config);
   })
 
-  .run(($transitions, $location, $window) => {
+  .run(($transitions, $location, $window, AuthService, $firebaseAuth, $state) => {
     'ngInject';
 
     $transitions.onSuccess({}, (transition) => {
       const name = transition.targetState().name();
       const page = "/" + name.replace(/\./g, '/');
     });
+
+    $transitions.onError({}, (transition) => {
+      if(transition._error.detail === "AUTH_REQUIRED") {
+        $state.go("app.login");
+      };
+    });
+
   })
 
   // Components
