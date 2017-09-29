@@ -16,7 +16,7 @@ class LoginController {
     this.loginUser = {email: null, password: null};
     this.username = "";
 
-    if (this.AuthService.getUser() != null) {
+    if (this.AuthService.isLoggedIn() != null) {
       this.$state.go('app.dash');
     }
 
@@ -33,15 +33,10 @@ class LoginController {
 
   }
 
-  onLogOut() {
-    this.AuthService.logout();
-  }
-
   onLogIn() {
     const user = this.loginUser;
     this.AuthService.login(user)
       .then((value) => {
-        console.log(value);
         this.$state.go("app.dash")
       }, function (reason) {
         alert(`Failed because ${reason}`)

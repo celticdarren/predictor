@@ -4,26 +4,18 @@ import * as firebase from 'firebase';
 
 class DashController {
 
-  constructor(Constants, AuthService,$firebaseAuth, $firebaseObject, $firebaseArray, $scope, $state) {
+  constructor(Constants, AuthService, $scope, $state, $firebaseArray) {
     'ngInject';
     console.log(`Dash running`);
     this.Constants = Constants;
     this.AuthService = AuthService;
-    let root = firebase.database().ref("fixtures/week1/teams/home");
-    let fixture = firebase.database().ref("fixtures/week1/teams/home");
-    this.fixtures = null;
     this.$state = $state;
     this.user = this.AuthService.getUser();
-
-
-
-// Attach an asynchronous callback to read the data at our posts reference
-    fixture.on("value", (snapshot) => {
-      this.fixtures = snapshot.val();
-      $scope.$applyAsync();
-    }, function (errorObject) {
-      console.log("The read failed: " + errorObject.code);
-    });
+    this.week = 1;
+    const ref = firebase.database().ref("fixtures/week1");
+    // create a synchronized array
+    // click on `index.html` above to see it used in the DOM!
+    this.messages = $firebaseArray(ref);
   }
 
   onLogOut() {

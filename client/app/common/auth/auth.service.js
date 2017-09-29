@@ -4,10 +4,11 @@ export default function ($firebaseAuth, $state) {
   'ngInject';
 
   const auth = $firebaseAuth(firebase.auth());
+  this.user = null;
 
   return {
     firebaseAuth() {
-        return $firebaseAuth(firebase.auth());
+      return $firebaseAuth(firebase.auth());
     },
 
     fbTest() {
@@ -25,8 +26,7 @@ export default function ($firebaseAuth, $state) {
 
     logout() {
       auth.$signOut().then(function () {
-        console.log("Logged out");
-        return true;
+        this.$state.go("app.loggedOut");
       }).catch(function (error) {
         console.log(error);
       });
@@ -38,24 +38,20 @@ export default function ($firebaseAuth, $state) {
       });
     },
 
-    isLoggedIn(isAuthNeeded = false) {
-      auth.$onAuthStateChanged(function(firebaseUser) {
-        if (isAuthNeeded && !firebaseUser) {
-          $state.go("app.login");
-        } else if(isAuthNeeded) {
-          console.log(`Signed in as: ${firebaseUser.uid}`);
-        }
-      });
+    isLoggedIn() {
+      return this.getUser();
     },
 
     getUser() {
-      var firebaseUser =auth.$getAuth();
+      let firebaseUser = auth.$getAuth();
 
       if (firebaseUser) {
-        console.log("Signed in as:", firebaseUser.uid);
+        console.log(firebaseUser);
       } else {
-        console.log("Signed out");
+        console.log("No user")
       }
+
+      return firebaseUser;
     }
 
   }

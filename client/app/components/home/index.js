@@ -13,6 +13,15 @@ const module = angular
         'content@app': {
           component: 'home'
         }
+      },
+      resolve: {
+        // controller will not be loaded until $requireSignIn resolves
+        // Auth refers to our $firebaseAuth wrapper in the factory below
+        "currentAuth": function(AuthService) {
+          // $requireSignIn returns a promise so the resolve waits for it to complete
+          // If the promise is rejected, it will throw a $routeChangeError (see above)
+          return AuthService.firebaseAuth().$waitForSignIn();
+        }
       }
     });
   })

@@ -1,6 +1,9 @@
-<heading class="homeHeader__top"></heading>
+<section class="dashHeader siteHeader">
+  <heading class="dashHeader__top siteHeader__top"></heading>
+</section>
+
 <h1>Dashboard</h1>
 <h2>Welcome {{vm.user.email}}</h2>
-<h3>Fixtures</h3>
-{{vm.fixtures}}
+{{vm.messages}}
+<scorecard user-id="vm.user.uid"></scorecard>
 <button ng-click="vm.onLogOut()">Log out</button>

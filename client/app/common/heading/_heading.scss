@@ -1,15 +1,11 @@
 @import "../../assets/styles/mixins/all";
 @import "../../assets/styles/globals";
 
-.homeHeader {
-  background: #000 url(/assets/images/football_goal_sunset.png) no-repeat center/cover;
-  height:500px;
+.siteHeader {
+
   width:100%;
 
-  > div {
-  }
-
-  .homeHeader__top {
+  .siteHeader__top {
     @include siteMargin;
     @include flexbox;
     @include flex-wrap(wrap);
@@ -29,20 +25,4 @@
       @include flex(1);
     }
   }
-  .homeHeader__middleContent {
-    @include siteMargin;
-    padding-top: 5rem;
-    text-align: center;
-    h2 {
-      color: $secondaryColor;
-    }
-    p {
-      color: $secondaryColor;
-    }
-  }
-
-
-
-
-
 }

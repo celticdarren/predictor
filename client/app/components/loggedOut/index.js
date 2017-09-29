@@ -1,17 +1,17 @@
-import LoginComponent from './login.component';
+import LoggedOutComponent from './loggedOut.component';
 
 const module = angular
-  .module('app.components.login', [])
+  .module('app.components.loggedOut', [])
 
   // View state config
   .config(($stateProvider) => {
     'ngInject';
 
-    $stateProvider.state('app.login', {
-      url: '/login',
+    $stateProvider.state('app.loggedOut', {
+      url: '/loggedout',
       views: {
         'content@app': {
-          component: 'login'
+          component: 'loggedOut'
         }
       },
       resolve: {
@@ -23,6 +23,6 @@ const module = angular
   })
 
   // Components
-  .component('login', LoginComponent);
+  .component('loggedOut', LoggedOutComponent);
 
 export default module.name;

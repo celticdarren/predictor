@@ -56,7 +56,7 @@ angular
     $transitions.onError({}, (transition) => {
       if(transition._error.detail === "AUTH_REQUIRED") {
         $state.go("app.login");
-      };
+      }
     });
 
   })

@@ -10,8 +10,10 @@
       <a href="#aboutUs">About us</a>
       <a href="#howToPlay">How to play</a>
       <a href="#">Enter now</a>
-      <a href ui-sref="app.login">Login</a>
-      <a href="#">Register</a>
+      <a ng-if="!vm.isLoggedIn" href ui-sref="app.login">Login</a>
+      <a ng-if="!vm.isLoggedIn" href="#">Register</a>
+      <a ng-if="vm.isLoggedIn" href="#" ui-sref="app.dash">Dashboard</a>
+      <a ng-if="vm.isLoggedIn" href="#" ng-click="vm.onLogOut()">Logout</a>
     </div>
   
   </div>

@@ -2,13 +2,23 @@
   "fixtures": {
     "week1": {
       "teams": {
-        "away": "England",
-        "home": "Scotland"
+        "game1": {
+          "away": "England",
+          "home": "Scotland",
+          "completed": true
+        }, "game2": {
+          "away": "Wales",
+          "home": "Ireland",
+          "completed": false
+        }
       },
       "score": {
-        "away": null,
-        "home": null
-      }
+        "game1": {
+          "away": 2,
+          "home": 2
+        }
+      },
+      "started": false
     }
   }
 }
