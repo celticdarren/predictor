@@ -3,12 +3,15 @@ import * as firebase from 'firebase';
 export default function ($firebaseAuth, $state, $firebaseArray) {
   'ngInject';
   const auth = $firebaseAuth(firebase.auth());
-  let fixtures = {};
+  let fixtures = null;
 
   return {
     getFixtures(week) {
-      debugger;
-      fixtures = $firebaseArray(firebase.database().ref(`fixtures/week${week}`));
+      if(fixtures == null) {
+        console.log("got fixtures");
+        let ref = firebase.database().ref("fixtures/week1");
+        fixtures = $firebaseArray(ref);
+      }
       return fixtures;
     },
     getUsersScores(uid, week) {

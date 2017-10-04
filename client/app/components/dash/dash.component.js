@@ -13,9 +13,8 @@ class DashController {
     this.user = this.AuthService.getUser();
     this.week = 1;
     const ref = firebase.database().ref("fixtures/week1");
-    // create a synchronized array
-    // click on `index.html` above to see it used in the DOM!
-    this.messages = $firebaseArray(ref);
+
+
   }
 
   onLogOut() {

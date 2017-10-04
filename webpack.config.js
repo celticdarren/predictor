@@ -16,7 +16,7 @@ module.exports = {
       {test: /\.html$/, loader: 'raw'},
       {test: /\.(scss|sass)$/, loader: 'style!css!resolve-url!sass'},
       {test: /\.css$/, loader: 'style!css!resolve-url'},
-      {test: /\.(ttf|eot|woff|woff2)(\?\S*)?$/, loader: 'file?name=./fonts/[name].[ext]'},
+      {test: /\.(ttf|eot|woff|woff2)(\?\S*)?$/, loader: 'file?name=assets/fonts/[name].[ext]'},
       {test: /\.(jp?g|svg|gif|png)(\?\S*)?$/, loader: 'file?name=./images/[name].[ext]'}
     ]
   },
@@ -34,7 +34,10 @@ module.exports = {
         {
           from: `${ __dirname }/client/app/assets/images`,
           to: `assets/images`
-        }
+        },{
+        from: `${ __dirname }/client/app/assets/fonts`,
+        to: `assets/fonts`
+      }
       ]
     ),
     // Automatically move all modules defined outside of application directory to vendor bundle.
