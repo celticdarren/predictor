@@ -5,6 +5,7 @@ export default function ($firebaseAuth, $state) {
 
   const auth = $firebaseAuth(firebase.auth());
   this.user = null;
+  this.$state = $state;
 
   return {
     firebaseAuth() {

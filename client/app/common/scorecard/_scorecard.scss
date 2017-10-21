@@ -1,0 +1,19 @@
+@import "../../assets/styles/mixins/all";
+
+.fixturesList {
+  @include siteMargin;
+
+  .fixtureRow {
+    @include flexbox();
+    margin-bottom:1rem;
+
+    .fixtureRow__team {
+      @include flex(1);
+      text-align: center;
+    }
+    .fixtureRow__score {
+      @include flex(1);
+      text-align: center;
+    }
+  }
+}

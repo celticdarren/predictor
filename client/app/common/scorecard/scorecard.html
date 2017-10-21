@@ -1,27 +1,13 @@
-<pre>
-  {{ vm.object | json }}
-</pre>
-
-<div class="fixturesList">
-  <div ng-repeat="fixture in vm.fixtureList.teams" class="fixtureRow">
+<ul class="fixturesList">
+  <li ng-repeat="fixture in vm.fixtureList.teams" class="fixtureRow">
     <div class="fixtureRow__team">
       {{fixture.home}}
     </div>
-    <div class="fixtureRow__teamScore">
-      {{fixture.home}}
-    </div>
-    <div class="fixtureRow__vs">
-      <p>VS</p>
+    <div class="fixtureRow__score">
+      {{vm.getTeamsScore("home", fixture.$id).home}} - {{vm.getTeamsScore("away", fixture.$id).away}}
     </div>
     <div class="fixtureRow__team">
       {{fixture.away}}
     </div>
-    <div class="fixtureRow__teamScore">
-      {{fixture.away}}
-    </div>
-    <div class="fixtureRow__userScore">
-      <input type="text">
-    </div>
-  </div>
-  <button ng-click="vm.test()"></button>
-</div>
+  </li>
+</ul>

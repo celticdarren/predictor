@@ -7,10 +7,18 @@ export default function ($firebaseAuth, $state, $firebaseArray) {
 
   return {
     getFixtures(week) {
-      if(fixtures == null) {
-        console.log("got fixtures");
-        let ref = firebase.database().ref("fixtures/week1");
-        fixtures = $firebaseArray(ref);
+      if (fixtures == null) {
+        let teams = firebase.database()
+          .ref("fixtures/week"+week+"/teams");
+        let score = firebase.database()
+          .ref("fixtures/week"+week+"/score");
+        score = $firebaseArray(score);
+        teams = $firebaseArray(teams);
+
+        fixtures = {
+          score: score,
+          teams: teams
+        };
       }
       return fixtures;
     },
