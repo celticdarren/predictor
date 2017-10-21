@@ -1,6 +1,6 @@
 <div class="homePage">
-  <section class="homeHeader">
-    <heading class="homeHeader__top"></heading>
+  <section class="homeHeader siteHeader">
+    <heading class="homeHeader__top siteHeader__top"></heading>
     <section class="homeHeader__middleContent">
       <article>
         <h2>Welcome to Fitbaw Predictor</h2>
@@ -16,7 +16,8 @@
     <ul class="homeDescription__list">
       <li class="factsListItem" ng-repeat="fact in vm.facts">
         <div class="factsListItem__image">
-          <img src="/assets/images/ball_{{$index + 1}}.png" alt="ball_{{$index}}" />
+          
+          <img ng-src="/assets/images/ball_{{$index + 1}}.png" alt="ball_{{$index}}" />
         </div>
         <div class="factsListItem__title">
           <h3>{{fact.title}}</h3>

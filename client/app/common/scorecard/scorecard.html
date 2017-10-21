@@ -1,22 +1,13 @@
-<div class="fixturesList">
-  <div ng-repeat="fixture in vm.fixtures" class="fixtureRow">
+<ul class="fixturesList">
+  <li ng-repeat="fixture in vm.fixtureList.teams" class="fixtureRow">
     <div class="fixtureRow__team">
-      {{fixture.home.team}}
+      {{fixture.home}}
     </div>
-    <div class="fixtureRow__teamScore">
-      {{fixture.home.score}}
-    </div>
-    <div class="fixtureRow__vs">
-      <p>VS</p>
+    <div class="fixtureRow__score">
+      {{vm.getTeamsScore("home", fixture.$id).home}} - {{vm.getTeamsScore("away", fixture.$id).away}}
     </div>
     <div class="fixtureRow__team">
-      {{fixture.away.team}}
+      {{fixture.away}}
     </div>
-    <div class="fixtureRow__teamScore">
-      {{fixture.away.score}}
-    </div>
-    <div class="fixtureRow__userScore">
-      <input type="text">
-    </div>
-  </div>
-</div>
+  </li>
+</ul>

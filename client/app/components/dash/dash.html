@@ -1,0 +1,12 @@
+<section class="dashHeader siteHeader">
+  <heading class="dashHeader__top siteHeader__top"></heading>
+</section>
+
+<h1>Dashboard</h1>
+<h2>Welcome {{vm.user.email}}</h2>
+{{vm.messages}}
+<div ng-repeat="one in vm.messages">
+  {{one}}<br>
+</div>
+<scorecard user-id="vm.user.uid"></scorecard>
+<button ng-click="vm.onLogOut()">Log out</button>

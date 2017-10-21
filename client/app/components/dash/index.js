@@ -1,17 +1,18 @@
-import HomeComponent from './home.component';
+import DashComponent from './dash.component';
+import * as firebase from 'firebase';
 
 const module = angular
-  .module('app.components.home', [])
+  .module('app.components.dash', [])
 
   // View state config
   .config(($stateProvider) => {
     'ngInject';
 
-    $stateProvider.state('app.home', {
-      url: '/',
+    $stateProvider.state('app.dash', {
+      url: '/dash',
       views: {
         'content@app': {
-          component: 'home'
+          component: 'dash'
         }
       },
       resolve: {
@@ -20,13 +21,14 @@ const module = angular
         "currentAuth": function(AuthService) {
           // $requireSignIn returns a promise so the resolve waits for it to complete
           // If the promise is rejected, it will throw a $routeChangeError (see above)
-          return AuthService.firebaseAuth().$waitForSignIn();
+          return AuthService.firebaseAuth().$requireSignIn();
         }
       }
     });
   })
 
+
   // Components
-  .component('home', HomeComponent);
+  .component('dash', DashComponent);
 
 export default module.name;

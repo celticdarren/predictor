@@ -1,9 +1,10 @@
 @import './reset';
 @import './globals';
 @import './mixins/all';
+@import './font';
 @import './blocks';
 @import './text';
-@import './fonts/all';
+
 
 html {
   font-size: 10px;

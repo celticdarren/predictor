@@ -3,13 +3,20 @@ import './_siteNav.scss';
 
 class SiteNavController {
 
-  constructor() {
+  constructor(AuthService, $state) {
     'ngInject';
+    this.AuthService = AuthService;
+    this.$state = $state;
+    this.isLoggedIn = this.AuthService.isLoggedIn();
     this.isNavOpen = false;
   }
 
   onNavClick() {
     this.isNavOpen = !this.isNavOpen;
+  }
+
+  onLogOut() {
+    this.AuthService.logout();
   }
 }
 
