@@ -1,33 +1,49 @@
 import * as firebase from 'firebase';
 
-export default function ($firebaseAuth, $state) {
+export default function ($firebaseAuth, $state, $firebaseArray) {
   'ngInject';
 
   const auth = $firebaseAuth(firebase.auth());
-  this.user = null;
-  this.$state = $state;
+  let loggedUser = null;
 
   return {
     firebaseAuth() {
       return $firebaseAuth(firebase.auth());
     },
 
-    fbTest() {
-      let ref = firebase.database().ref();
-      return ref.child('scores').child('lochgreen');
-    },
-
     register(user) {
-      return auth.$createUserWithEmailAndPassword(user.email, user.password);
+      return auth.$createUserWithEmailAndPassword(user.email, user.password).then(function (newUser) {
+
+        let ref = firebase.database().ref("users").child(newUser.uid);
+        let userObj = {
+          "fName": user.fName,
+          "sName": user.sName,
+          "email": user.email
+        };
+
+        ref.set(userObj);
+      }, function (error) {
+        // Handle Errors here.
+        let errorCode = error.code;
+        let errorMessage = error.message;
+      });
     },
 
     login(user) {
-      return auth.$signInWithEmailAndPassword(user.email, user.password);
+      return auth.$signInWithEmailAndPassword(user.email, user.password).then(function (cb) {
+        let ref = firebase.database().ref("users");
+        let users = $firebaseArray(ref);
+        return users.$loaded().then(() => {
+          loggedUser = users.$getRecord(cb.uid);
+        });
+
+      });
     },
 
     logout() {
       auth.$signOut().then(function () {
-        this.$state.go("app.loggedOut");
+        loggedUser = null;
+        $state.go("app.loggedOut");
       }).catch(function (error) {
         console.log(error);
       });
@@ -44,15 +60,11 @@ export default function ($firebaseAuth, $state) {
     },
 
     getUser() {
-      let firebaseUser = auth.$getAuth();
-
-      if (firebaseUser) {
-        console.log(firebaseUser);
-      } else {
-        console.log("No user")
+      if (loggedUser == null) {
+        loggedUser = auth.$getAuth();
       }
 
-      return firebaseUser;
+      return loggedUser;
     }
 
   }

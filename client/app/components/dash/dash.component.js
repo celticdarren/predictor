@@ -9,12 +9,7 @@ class DashController {
     console.log(`Dash running`);
     this.Constants = Constants;
     this.AuthService = AuthService;
-    this.$state = $state;
     this.user = this.AuthService.getUser();
-    this.week = 1;
-    const ref = firebase.database().ref("fixtures/week1");
-
-
   }
 
   onLogOut() {

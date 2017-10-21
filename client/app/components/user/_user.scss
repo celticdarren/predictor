@@ -1,0 +1,6 @@
+@import "../../assets/styles/mixins/all";
+@import "../../assets/styles/globals";
+
+.userAccount {
+  @include siteMargin();
+}

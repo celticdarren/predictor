@@ -1,8 +1,44 @@
 <div class="loginPage">
-  <h1>Login</h1>
-  <div>
-    <input type="text" ng-model="vm.loginUser.email" name="email" />
-    <input type="text" ng-model="vm.loginUser.password" name="password" />
-    <input type="submit" name="submit" ng-click="vm.onLogIn()" />
+
+  <div class="loginPage__logIn">
+    <h1>Login</h1>
+    <form id="userLogin">
+      <input type="text" ng-model="vm.loginUser.email" name="email"/>
+      <input type="text" ng-model="vm.loginUser.password" name="password"/>
+      <input type="submit" name="submit" ng-click="vm.onLogIn()"/>
+    </form>
   </div>
+
+  <div class="loginPage__register">
+    <h1>Register</h1>
+    <form id="userRegister">
+      <fieldset>
+        <label for="firstName">
+          First name:
+        </label>
+        <input type="text" ng-model="vm.registerUser.fName" id="firstName" name="firstName"/>
+      </fieldset>
+      <fieldset>
+        <label for="surname">
+          Surname:
+        </label>
+        <input type="text" ng-model="vm.registerUser.sName" id="surname" name="surname"/>
+      </fieldset>
+      <fieldset>
+        <label for="email">
+          Email:
+        </label>
+        <input type="text" ng-model="vm.registerUser.email" id="email" name="email"/>
+      </fieldset>
+      <fieldset>
+        <label for="password">
+          Password:
+        </label>
+        <input type="text" ng-model="vm.registerUser.password" id="password" name="password"/>
+      </fieldset>
+
+      <input type="submit" name="submit" ng-click="vm.onRegister()"/>
+    </form>
+  </div>
+
 </div>

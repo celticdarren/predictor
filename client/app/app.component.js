@@ -9,11 +9,9 @@ class AppController {
       if (firebaseUser) {
         console.log("Signed in as:", firebaseUser.uid);
       } else {
-        if ($state.includes("app.dash")) {
+        if ($state.includes("app.loggedin")) {
           $state.go("app.login");
         }
-        console.log("Signed out");
-
       }
     });
   }

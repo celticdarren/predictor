@@ -14,33 +14,35 @@ class LoginController {
     let root = ref.child('scores');
 
     this.loginUser = {email: null, password: null};
-    this.username = "";
+    this.registerUser = {
+      fName: null,
+      sName: null,
+      email: null,
+      password: null
+    };
 
     if (this.AuthService.isLoggedIn() != null) {
-      this.$state.go('app.dash');
+      this.$state.go('app.loggedin.dash');
     }
-
-    // var obj = $firebaseObject(ref);
-    // debugger;
-    // // to take an action after the data loads, use the $loaded() promise
-    // obj.$loaded().then(function() {
-    //   console.log(obj.scores);
-    //   // To iterate the key/value pairs of the object, use angular.forEach()
-    //   angular.forEach(obj, function(value, key) {
-    //     console.log(key, value);
-    //   });
-    // });
-
   }
 
   onLogIn() {
     const user = this.loginUser;
     this.AuthService.login(user)
-      .then((value) => {
-        this.$state.go("app.dash")
+      .then(() => {
+        this.$state.go("app.loggedin.dash")
       }, function (reason) {
         alert(`Failed because ${reason}`)
       });
+  }
+
+  onRegister() {
+    const registerUser = this.registerUser;
+    this.AuthService.register(registerUser).then(() => {
+      this.$state.go("app.loggedin.dash")
+    }, function (reason) {
+      alert(`Failed because ${reason}`)
+    });
   }
 
 }

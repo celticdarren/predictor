@@ -1,18 +1,17 @@
-import DashComponent from './dash.component';
-import * as firebase from 'firebase';
+import UserComponent from './user.component';
 
 const module = angular
-  .module('app.components.dash', [])
+  .module('app.components.user', [])
 
   // View state config
   .config(($stateProvider) => {
     'ngInject';
 
-    $stateProvider.state('app.loggedin.dash', {
-      url: '^/dash',
+    $stateProvider.state('app.loggedin.user', {
+      url: '/user',
       views: {
         'content@app': {
-          component: 'dash'
+          component: 'user'
         }
       },
       resolve: {
@@ -29,6 +28,6 @@ const module = angular
 
 
   // Components
-  .component('dash', DashComponent);
+  .component('user', UserComponent);
 
 export default module.name;

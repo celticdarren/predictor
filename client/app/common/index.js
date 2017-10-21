@@ -4,6 +4,7 @@ import ConstantsModule from './constants';
 import HeadingModule from './heading';
 import AuthServiceModule from './auth';
 import ScorecardServiceModule from './scorecardService';
+import WidgetsModule from './widgets';
 
 const module = angular
   .module('app.common', [
@@ -13,6 +14,7 @@ const module = angular
     HeadingModule,
     AuthServiceModule,
     ScorecardServiceModule,
+    WidgetsModule
   ]);
 
 export default module.name;
