@@ -60,11 +60,21 @@ export default function ($firebaseAuth, $state, $firebaseArray) {
     },
 
     getUser() {
-      if (loggedUser == null) {
-        loggedUser = auth.$getAuth();
-      }
+      if (loggedUser == null && auth.$getAuth() != null) {
+        let getAuthObj = auth.$getAuth();
+        let ref = firebase.database().ref("users");
+        let users = $firebaseArray(ref);
 
-      return loggedUser;
+        return users.$loaded().then(() => {
+          loggedUser = users.$getRecord(getAuthObj.uid);
+          return loggedUser;
+        });
+
+      } else {
+        return new Promise((resolve, reject) => {
+          resolve(loggedUser);
+        });
+      }
     }
 
   }

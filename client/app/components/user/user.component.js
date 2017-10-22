@@ -8,7 +8,10 @@ class UserController {
     console.log(`Dash running`);
     this.Constants = Constants;
     this.AuthService = AuthService;
-    this.user = this.AuthService.getUser();
+    this.user = null;
+    this.AuthService.getUser().then((res) => {
+      this.user = res;
+    });
   }
 
 }

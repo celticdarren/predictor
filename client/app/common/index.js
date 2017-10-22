@@ -4,6 +4,7 @@ import ConstantsModule from './constants';
 import HeadingModule from './heading';
 import AuthServiceModule from './auth';
 import ScorecardServiceModule from './scorecardService';
+import UserScorecardModule from './userScorecard';
 import WidgetsModule from './widgets';
 
 const module = angular
@@ -14,6 +15,7 @@ const module = angular
     HeadingModule,
     AuthServiceModule,
     ScorecardServiceModule,
+    UserScorecardModule,
     WidgetsModule
   ]);
 
